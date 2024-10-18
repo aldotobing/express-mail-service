@@ -1,5 +1,7 @@
 # mail-smtp-service
 
+![mail-smtp-service](/maxresdefault.jpg)
+
 This project is a backend service designed to send emails via a RESTful API. Built with Node.js and Express, it leverages Nodemailer for handling email delivery. This service does not include a frontend; instead, it provides an endpoint for other applications to send emails programmatically.
 
 ## Technologies Used
