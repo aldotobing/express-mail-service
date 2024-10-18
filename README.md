@@ -20,25 +20,25 @@ This project is a backend service designed to send emails via a RESTful API. Bui
    ```
 2. Install dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. Create a .env file in the root directory and configure your SMTP settings:
 
-```bash
-SMTP_HOST=your_smtp_host
-SMTP_PORT=your_smtp_port
-SMTP_USER=your_smtp_user
-SMTP_PASS=your_smtp_password
-RECEIVER_EMAIL=recipient@example.com
-```
+   ```bash
+   SMTP_HOST=your_smtp_host
+   SMTP_PORT=your_smtp_port
+   SMTP_USER=your_smtp_user
+   SMTP_PASS=your_smtp_password
+   RECEIVER_EMAIL=recipient@example.com
+   ```
 
 4. Start the server:
 
-```bash
-node index.js
-```
+   ```bash
+   node index.js
+   ```
 
 5. The service will be running on http://localhost:3030
 
@@ -48,11 +48,11 @@ node index.js
 
 ## Request Body Example
 
-```bash
-{
-"name": "John Doe",
-"email": "johndoe@example.com",
-"subject": "Test Email",
-"message": "Hello, this is a test email!"
-}
-```
+    ```bash
+    {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "subject": "Test Email",
+    "message": "Hello, this is a test email!"
+    }
+    ```
