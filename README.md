@@ -14,10 +14,12 @@ This project is a backend service designed to send emails via a RESTful API. Bui
 ## Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/aldotobing/mail-smtp-service.git
    cd mail-smtp-service
    ```
+
 2. Install dependencies:
 
    ```bash
