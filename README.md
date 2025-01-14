@@ -46,8 +46,10 @@ This project is a backend service designed to send emails via a RESTful API. Bui
 
 ## API Endpoints
 ```
-POST /send-email: **Sends an email using the details provided in the request body.**
+POST /send-email
 ```
+Sends an email using the details provided in the request body.
+
 ## Request Body Example
     {
     "name": "John Doe",
