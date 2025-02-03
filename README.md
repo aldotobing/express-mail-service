@@ -1,4 +1,4 @@
-# mail-delivery-service
+# express-mail-service
 
 ![mail-smtp-service](/maxresdefault.jpg)
 
