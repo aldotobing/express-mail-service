@@ -58,3 +58,6 @@ Sends an email using the details provided in the request body.
     "message": "Hello, this is a test email!"
     }
     
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
