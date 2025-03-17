@@ -52,10 +52,10 @@ Sends an email using the details provided in the request body.
 
 ## Request Body Example
     {
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "subject": "Test Email",
-    "message": "Hello, this is a test email!"
+       "name": "John Doe",
+       "email": "johndoe@example.com",
+       "subject": "Test Email",
+       "message": "Hello, this is a test email!"
     }
     
 ## License
