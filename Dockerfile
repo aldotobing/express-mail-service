@@ -1,18 +1,40 @@
-# Gunakan Node.js sebagai base image
-FROM node:16-alpine
+# Use Node.js LTS version
+FROM node:22-alpine
 
-# Set work directory
+# Add non-root user for security
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Set working directory
 WORKDIR /app
 
-# Copy package.json dan install dependencies
-COPY package.json .
-RUN npm install
+# Copy package files
+COPY package*.json ./
 
-# Copy semua file ke dalam container
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application files
 COPY . .
 
-# Expose port 3030
+# Set ownership to non-root user
+RUN chown -R appuser:appgroup /app
+
+# Switch to non-root user
+USER appuser
+
+# Expose application port
 EXPOSE 3030
 
-# Jalankan aplikasi
-CMD ["npm", "start"]
+# Environment variables
+ENV NODE_ENV=production \
+    SMTP_HOST= \
+    SMTP_PORT= \
+    SMTP_USER= \
+    SMTP_PASS=
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:3030 || exit 1
+
+# Start the application
+CMD ["node", "index.js"]

@@ -7,25 +7,28 @@ require("dotenv").config();
 const app = express();
 const PORT = 3030;
 
-// Middleware untuk logging setiap request
 app.use((req, res, next) => {
-  next(); // Lanjutkan ke middleware atau route berikutnya
+  next();
 });
 
 // Middleware CORS
 app.use(
   cors({
-    origin: "*", // Mengizinkan hanya origin ini
-    methods: ["GET", "POST", "OPTIONS"], // Metode yang diizinkan
-    allowedHeaders: ["Content-Type", "Authorization"], // Header yang diizinkan
+    origin: "*",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Endpoint untuk mengirim email
+// Endpoint
 app.post("/send-email", async (req, res) => {
-  const { name, email, subject, message } = req.body;
+  const { name, email, subject, message, to } = req.body;
+
+  if (!to) {
+    return res.status(400).json({ message: "Receiver email (to) is required" });
+  }
 
   try {
     const transporter = nodemailer.createTransport({
@@ -40,7 +43,7 @@ app.post("/send-email", async (req, res) => {
 
     const mailOptions = {
       from: `"${name}" <${email}>`,
-      to: process.env.RECEIVER_EMAIL,
+      to: to,
       subject: subject,
       text: message,
     };
@@ -52,7 +55,7 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
-// Jalankan server
+//run
 app.listen(PORT, () => {
   console.log(`Email service running on http://localhost:${PORT}`);
 });
